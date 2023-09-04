@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Facebook Graph -->
+{% block og_title %}{{ post.title }}{% endblock %}
+{% block og_description %}{{ post.meta_description }}{% endblock %}
+{% block og_image %}{{ post.image.url }}{% endblock %}
+{% block og_image:width %}{{ post.image.url }}{% endblock %}
+{% block og_image:height %}{{ post.image.url }}{% endblock %}
+{% block og_image:type %}{{ post.image.url }}{% endblock %}
+{% block og_url %}{{ post.get_absolute_url }}{% endblock %}
+
+
+<!-- Google Meta -->
+{% block meta_description %}{{ post.meta_description }}{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
+
+<!-- Twitter Card -->
+{% block twitter_title %}{{ post.title }}{% endblock %}
+{% block twitter_description %}{{ post.meta_description }}{% endblock %}
+{% block twitter_image %}{{ post.image.url }}{% endblock %}
+{% block twitter_url %}{{ post.get_absolute_url }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="post-details">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" style="margin-top: 15px; margin-left: 17px; margin-bottom: -5px;" href="{{ post.category_url }}">{{ post.category }}</a>
+                    <h2 class="post-details-title">{{ post.title }}</h2>
+                    <div class="post-details-meta">
+                       <span class="post-details-author"><img class="rounded-circle mr-2" src="{{ post.author.profile_image.url }}" width="20" height="20" style="margin-left: 10px; margin-bottom: 4px;"
+                        alt="">{{ post.author }} | </span>
+                        <span class="post-details-date">{{ post.created_at }}</span>
+                    </div>
+                    <img class="post-details-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+                    <div class="post-details-content">
+                        {{ post.content|safe }}
+                    </div>
+                </div>
+                <hr>
+                <!-- Exibir formulário de comentário -->
+                <div class="post-details-comments">
+                <h3 class="m-0 text-uppercase font-weight-bold">Comentários<span style="color: orange; font-size: 19px;"> (Brevemente) </span></h3>
+                {% for comment in post.comments.all %}
+                    <div class="comment">
+                        <h4 class="comment-nome">{{ comment.name }}</h4>
+                        <p>{{ comment.content }}</p>
+                    </div>
+                {% empty %}
+                    <p>Nenhum comentário ainda.</p>
+                {% endfor %}
+
+
+                    <h3 class="m-0 text-uppercase font-weight-bold">Adicionar Comentário</h3>
+                    <form method="post" action="#">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Comentário</label>
+                            <textarea class="form-control" id="content" name="content" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+                    </form>
+                </div>
+                <hr>
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="col-lg-4">
+                <!-- Sidebar -->
+                {% block sidebar %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

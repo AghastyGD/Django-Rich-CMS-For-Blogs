@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sobre o MozTeek{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="post-details-content">
+                <h2 class="text-uppercase font-weight-bold mb-4" style="text-align: center;">Sobre Nós</h2>
+                <img class="img-fluid mb-4" style="width:300px; height:75px; text-align: center;" src="{% static 'img/logo_sobre.png' %}" alt="MozTeek Logo">
+                <p>O MozTeek é o portal geek de referência em Moçambique, onde você encontrará notícias, artigos, análises, tutoriais e curiosidades sobre cultura geek, tecnologia, cinema, séries, jogos e muito mais.</p>
+                <p>Estamos aqui para ser o ponto de encontro dessa comunidade apaixonada pela cultura pop e pela tecnologia.</p>
+                <p>Navegue por nosso blog e descubra o universo fascinante do entretenimento geek e da inovação tecnológica. Acompanhe nossas postagens e fique por dentro das últimas novidades do mundo nerd.</p>
+                <h2 style="text-align: center;">Seja bem-vindo ao MozTeek!</h2>
+                
+                <div class="text-center mt-4">
+                    <a href="{% url 'post_list' %}" class="btn btn-primary btn-lg">Explorar Postagens</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

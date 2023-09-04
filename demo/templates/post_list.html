@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Facebook Graph -->
+{% block og_title %}MozTeek - Conectando Moçambique à Cultura Geek e Tecnologia{% endblock %}
+{% block og_description %}Bem-vindo ao maior Portal Geek de Moz. Confira as últimas postagens sobre tecnologia, cinema, curiosidades, jogos e muito mais.{% endblock %}
+{% block og_image %}{% static 'img/logo.png' %}{% endblock %}
+{% block og:image:width %}526{% endblock %}
+{% block og:image:height %}275{% endblock %}
+{% block og:image:type %}image/jpeg{% endblock %}
+
+
+<!-- Google Meta Tags -->
+{% block meta_description %}Bem-vindo ao maior Portal Geek de Moz. Confira as últimas postagens sobre tecnologia, cinema, curiosidades, jogos e muito mais.{% endblock %}
+{% block title %}MozTeek - Conectando Moçambique à Cultura Geek e Tecnologia{% endblock %}
+
+<!-- Twitter Card -->
+{% block twitter_title %}MozTeek - Conectando Moçambique à Cultura Geek e Tecnologia{% endblock %}
+{% block twitter_description %}Bem-vindo ao maior Portal Geek de Moz. Confira as últimas postagens sobre tecnologia, cinema, curiosidades, jogos e muito mais.{% endblock %}
+{% block twitter_image %}{% static 'img/logo.png' %}{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Recentes</h4>
+                            </div>
+                        </div>
+                        {% for post in page_obj %}
+                            <div class="col-lg-6">
+                                <div class="position-relative mb-3">
+                                    <a href="{{ post.get_absolute_url }}"><img class="img-fluid" src="{{ post.image.url }}" style="object-fit: cover; width: 700px; height: 300px;"></a>
+                                    <div class="bg-white border border-top-0 p-4">
+                                        <div class="mb-2">
+                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="{{ post.category_url }}">{{ post.category }}</a>
+                                            <a class="text-body" href=""><small>{{ post.date }}</small></a>
+                                        </div>
+                                        <a class="h4 d-block mb-3 text-secondary text font-weight-bold" href="{{ post.get_absolute_url }}">{{ post.title}}</a>
+                                        <p class="m-0">{{ post.meta_description|safe|truncatechars:110 }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle mr-2" src="{{ post.author.profile_image.url }}" width="25" height="25" alt="">
+                                            <small>{{ post.author }}</small>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <small class="ml-3"><i class="far fa-eye mr-2"></i>{{post.views}}</small>
+                                            <small class="ml-3"><i class="far fa-comment mr-2"></i></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <!-- Paginação -->
+                    <nav aria-label="Paginação" class="my-4">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page=1">&laquo;</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                                </li>
+                            {% endif %}
+                            <li class="page-item active">
+                                <a class="page-link" href="#">{{ page_obj.number }}</a>
+                            </li>
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+
+                </div>
+                {% include 'sidebar.html' %}
+            </div>
+        </div>
+    </div>
+    <hr>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset = "UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% block meta_tags %}
+
+    <!-- Facebook Graph -->
+    <meta property="og:title" content="{% block og_title %}MozTeek - Demo{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Boas Vindas ao maior Portal Geek de Moçambique, aqui você vai encontrar todos tipos de conteúdos relacionado à tecnologia, ficções, cinema e muito mais. Vamos mergulhar juntos nesse mundo!{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'img/logo_meta.png' %}{% endblock %}">
+    <meta property="og:image:width" content="{% block og:image:width %}526{% endblock %}">
+    <meta property="og:image:height" content="{% block og:image:height %}275{% endblock %}">
+    <meta property="og:image:type" content="{% block og:image:type %}image/jpeg{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
+    <meta property="og:type" content="website">
+
+    <!-- Google Meta Tags -->
+    <meta name="description" content="{% block meta_description %}Boas Vindas ao maior Portal Geek de Moçambique, aqui você vai encontrar todos tipos de conteúdos relacionado à tecnologia, ficções, cinema e muito mais. Vamos mergulhar juntos nesse mundo!{% endblock %}">
+    <title>{% block title %}MozTeek - Conectando Moçambique à Cultura Geek e Tecnologia{% endblock %}</title>
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{% block twitter_url %}{{ request.build_absolute_uri }}{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}MozTeek - Conectando Moçambique à Cultura Geek e Tecnologia{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Boas Vindas ao maior Portal Geek de Moçambique, aqui você vai encontrar todos tipos de conteúdos relacionado à tecnologia, ficções, cinema e muito mais. Vamos mergulhar juntos nesse mundo!{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{% static 'img/logo_meta.png' %}{% endblock %}">
+
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/logo.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+</head>
+<body>
+    {% include 'header.html' %}
+
+    {% if request.path == '/' %}
+    {% include 'main_posts.html' %}
+    {% include 'breaking_ticker.html' %}
+    {% endif %}
+
+    {% if request.path == '/' %}
+    {% include 'features.html' %}
+    {% endif %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% include 'footer.html' %}
+
+    <!-- Back To Top -->
+    <a href="#" class="btn btn-primary btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <!-- Template JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+
+

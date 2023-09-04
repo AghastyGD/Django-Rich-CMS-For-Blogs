@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Adicionar Comentário{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2>Adicionar Comentário</h2>
+                <form method="POST" action="{% url 'add_comment' year=year month=month slug_url=slug_url %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Enviar Comentário</button>
+                </form>
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="col-lg-4">
+                <!-- Sidebar -->
+                {% block sidebar %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

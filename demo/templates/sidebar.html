@@ -1,0 +1,82 @@
+{% load static %}
+
+<div class="col-lg-4">
+    <!-- Newsletter Start -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+        </div>
+        <div class="bg-white text-center border border-top-0 p-3">
+            <p style="color: orange;">(Brevemente)</p>
+            <div class="input-group mb-2" style="width: 100%;">
+                <input type="text" class="form-control form-control-lg" placeholder="Seu Email">
+                <div class="input-group-append">
+                    <button class="btn btn-primary font-weight-bold px-3">Inscrever-Se</button>
+                </div>
+            </div>
+            <small style="color: orange;">(Brevemente)</small>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+
+    
+
+    <!-- Ads Start -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold"></h4>
+        </div>
+        <div class="bg-white text-center border border-top-0 p-3">
+            <a href=""><img class="img-fluid" src="#" alt=""></a>
+        </div>
+    </div>
+    <!-- Ads End -->
+
+    <!-- Popular News Start -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold">Populares</h4>
+        </div>
+        <div class="bg-white border border-top-0 p-3">
+        {% if popular_posts %}
+            {% for post in popular_posts %}
+            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                <img class="img-fluid" src="{{post.image.url}}" style="object-fit: cover; height: 110px; width: 110px;" alt="">
+                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">{{post.category}}</a>
+                        <a class="text-body" href=""><small>{{post.created_at}}</small></a>
+                    </div>
+                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{post.get_absolute_url}}">{{post.title|truncatechars:34}}</a>
+                </div>
+            </div>
+            {% endfor %}     
+        {% else %}
+            <p>Nenhuma postagem popular encontrada</p>
+        {% endif %}
+        </div>
+    </div>
+    <!-- Popular News End -->
+    <!-- TAGS -->
+    <div class="mb-3">
+        <div class="section-title mb-0">
+            <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
+        </div>
+        <div class="bg-white border border-top-0 p-3">
+            <div class="d-flex flex-wrap m-n1">
+                <a href="" class="btn btn-sm btn-outline-secondary m-1">Streaming</a>
+                <a href="" class="btn btn-sm btn-outline-secondary m-1">Tutoriais</a>
+                <a href="" class="btn btn-sm btn-outline-secondary m-1">Notícias</a>
+                <a href="" class="btn btn-sm btn-outline-secondary m-1">Curiosidades</a>
+                <a href="" class="btn btn-sm btn-outline-secondary m-1">Cinema</a>
+                <a href="" class="btn btn-sm btn-outline-secondary m-1">Tecnologia</a>
+            </div>
+        </div>
+    </div>
+    <!-- Tags End -->
+</div>
+</div>
+</div>
+</div>
+<!-- News With Sidebar End -->
+
