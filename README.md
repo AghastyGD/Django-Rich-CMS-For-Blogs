@@ -6,7 +6,7 @@ Achei que poderia compartilhar algumas ideias bacanas que tive para implementar 
 O objetivo do projeto é servir de ferramenta para blogueiros ou devs que pretendem um acesso rápido para construção e personalização de um CMS em Django e implementar em um site ou blog.
 
 ### Funcionalidades:
-1 - ### Sitemap: Capacidade de gerar sitemap de todas as paginas do seu site ou blog. (Ajuda no SEO)
+1 - Sitemap: Capacidade de gerar sitemap de todas as paginas do seu site ou blog. (Ajuda no SEO)
 
 2 - ### AutoSlug: Definição de slugs automáticos com base no título da sua postagem, rapido e eficiente, e claro, com foco em SEO, por isso que optei também por pegar primeiro o ano e o mês do post antes do slug do título 🔍
 
