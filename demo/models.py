@@ -56,10 +56,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(blank=True, null=True, verbose_name='Criado em')
     updated_at = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False, verbose_name='Publicar')
-    highlighted = models.BooleanField(default=False)
-    main_01 = models.BooleanField(default=False)
-    main_02 = models.BooleanField(default=False)
-    author = models.ForeignKey(Profile, on_delete=models.PROTECT)
+    highlighted = models.BooleanField(default=False, verbose_name='Destacar')
+    main_01 = models.BooleanField(default=False, verbpse_name='Principal 01')
+    main_02 = models.BooleanField(default=False, verbose_name='Principal 02')
+    author = models.ForeignKey(Profile, on_delete=models.PROTECT, verbose_name='Autor')
     
     
     # == CONFIGURAÇÃO DAS VARIÁVEIS PARA SLUG AUTOMÁTICO ==
