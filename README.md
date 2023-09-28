@@ -1,7 +1,7 @@
 ## Django Rich CMS for Blogs (Sistema Gerenciador de Conteúdos para Blogs e Sites) - Django + Ckeditor
 
 Seja bem vindo a mais um meu projeto pessoal, este aqui é quase um código-aberto de como eu construí o CMS do meu site profissional: mozteek.com
-Achei que poderia compartilhar algumas ideias bacanas que tive para implementar em CMS feito em Django, tornei fácil de manejar e mais completo possível. Optei pelo CKEditor como o nosso editor de texto (corpo da postagem) e a biblioteca autoslug com definação de algumas variáveis para gerar slugs automáticos e versatéis.
+Achei que poderia compartilhar algumas ideias bacanas que tive para implementar em CMS feito em Django, tornei fácil de manejar e mais completo possível. Optei pelo CKEditor como o nosso editor de texto (corpo da postagem) e a biblioteca autoslug com definação de algumas variáveis para gerar slugs automáticos e amigavéis para SEO (Search Engine Optimization).
 
 O objetivo do projeto é servir de ferramenta para blogueiros ou devs que pretendem um acesso rápido para construção e personalização de um CMS em Django e implementar em um site ou blog.
 
